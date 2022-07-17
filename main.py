@@ -41,6 +41,8 @@ bot_1_tim = 0
 bot_2_tim = 0
 final_point = 3
 final_speed = 20
+motion_1 = "STOP"
+motion_2 = "STOP"
 
 gameOn = True
 app_bool = True
@@ -69,7 +71,9 @@ square2 = Square()
 
 
 def goal():
-    global score, coord_1, coord_2, coord_3
+    global motion_1, motion_2, score, coord_1, coord_2, coord_3
+    motion_1 = "STOP"
+    motion_2 = "STOP"
     stopGame = True
     while stopGame:
         for event1 in pygame.event.get():
@@ -91,10 +95,12 @@ def goal():
 
 def pause_game():
     pause = True
-    global score, coord_1, coord_2, coord_3, \
+    global motion_1, motion_2, score, coord_1, coord_2, coord_3, \
         angle_ball, gameOn, app_bool, prologOn1, \
         prologOn2, player, bot, bot_2, choosePlayer, \
         setting, winner
+    motion_1 = "STOP"
+    motion_2 = "STOP"
     while pause:
         for event1 in pygame.event.get():
             if event1.type == KEYDOWN:
@@ -273,7 +279,7 @@ def winners():
 
 
 def game():
-    global gameOn, app_bool, coord_1, coord_2, \
+    global motion_1, motion_2, gameOn, app_bool, coord_1, coord_2, \
         coord_3, speed, dx, angle_ball, bot_1_tim, \
         bot_2_tim, choosePlayer, bot_2, bot, prologOn1, \
         prologOn2, player, setting, final_point, winner
